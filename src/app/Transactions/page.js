@@ -1,5 +1,6 @@
-
-export default function Transactions() {
+ 'use client'
+import withAuth from "@/app/hoc/withAuth";
+ function Transactions() {
   
   
   
@@ -7,3 +8,4 @@ export default function Transactions() {
     <div>
     </div>
   );}
+  export default withAuth(Transactions);

@@ -1,5 +1,6 @@
+'use client'
 
-
+import withAuth from "@/app/hoc/withAuth";
 const Transfer = () => {
    
     
@@ -10,4 +11,4 @@ const Transfer = () => {
     </> );
 }
  
-export default Transfer;
+export default withAuth(Transfer);

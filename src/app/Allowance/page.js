@@ -1,3 +1,6 @@
+'use client'
+
+import withAuth from "@/app/hoc/withAuth";
 
 const Allowance = () => {
 
@@ -7,4 +10,4 @@ const Allowance = () => {
     </> );
 }
  
-export default Allowance;
+export default withAuth(Allowance);

@@ -1,6 +1,7 @@
+'use client'
+import withAuth from "@/app/hoc/withAuth";
 
-
-export default function Markets() {
+ function Markets() {
     
   
 
@@ -9,3 +10,4 @@ export default function Markets() {
     </div>
   )
 }
+export default withAuth(Markets);

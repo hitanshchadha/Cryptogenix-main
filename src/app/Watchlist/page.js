@@ -1,4 +1,6 @@
+'use client'
 
+import withAuth from "@/app/hoc/withAuth";
 
 
 
@@ -10,6 +12,6 @@ const Watchlist = () => {
     </> );
 }
  
-export default Watchlist;
+export default withAuth(Watchlist);
 
 
