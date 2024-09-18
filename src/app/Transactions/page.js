@@ -8,4 +8,4 @@ import withAuth from "@/app/hoc/withAuth";
     <div>
     </div>
   );}
-  export default withAuth(Transactions);
+  export default withAuth(Transactions,true);

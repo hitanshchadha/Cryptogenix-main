@@ -11,4 +11,4 @@ const Transfer = () => {
     </> );
 }
  
-export default withAuth(Transfer);
+export default withAuth(Transfer,true);

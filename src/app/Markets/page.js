@@ -10,4 +10,4 @@ import withAuth from "@/app/hoc/withAuth";
     </div>
   )
 }
-export default withAuth(Markets);
+export default withAuth(Markets,true);

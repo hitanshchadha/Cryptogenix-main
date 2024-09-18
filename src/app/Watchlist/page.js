@@ -12,6 +12,6 @@ const Watchlist = () => {
     </> );
 }
  
-export default withAuth(Watchlist);
+export default withAuth(Watchlist,true);
 
 

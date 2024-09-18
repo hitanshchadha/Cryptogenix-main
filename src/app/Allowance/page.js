@@ -10,4 +10,4 @@ const Allowance = () => {
     </> );
 }
  
-export default withAuth(Allowance);
+export default withAuth(Allowance,true);

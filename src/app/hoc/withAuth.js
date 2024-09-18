@@ -1,11 +1,12 @@
-'use client'
+'use client';
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Web3 from "web3";
 
-const withAuth = (WrappedComponent) => {
-  return (props) => {
+const withAuth = (WrappedComponent, requireAuth = false) => {
+  const AuthenticatedComponent = (props) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
 
     useEffect(() => {
@@ -13,7 +14,7 @@ const withAuth = (WrappedComponent) => {
         // Check if MetaMask is installed
         if (typeof window.ethereum !== "undefined") {
           const web3 = new Web3(window.ethereum);
-          
+
           try {
             // Request wallet connection
             await window.ethereum.enable();
@@ -22,31 +23,39 @@ const withAuth = (WrappedComponent) => {
             // If wallet is connected and account is available
             if (accounts.length > 0) {
               setIsAuthenticated(true);  // Set authenticated state to true
-              router.push("/Dashboard");
-            } else {
-              // Redirect to login if no account is found
-              router.push("/");
             }
           } catch (e) {
-            // If user denies access or another error occurs
-            router.push("/");
+            console.error(e);
           }
-        } else {
-          // MetaMask is not installed, redirect to login
-          router.push("/");
         }
+        
+        setLoading(false); // Done checking authentication
       };
 
       authenticateWallet();
     }, []);
 
-    // if (!isAuthenticated) {
-    //   // Optionally show a loading spinner until authenticated
+    useEffect(() => {
+      // Redirect logic only if authentication is required
+      if (!loading && requireAuth && !isAuthenticated) {
+        router.push("/");  // Redirect to login if not authenticated
+      }
+    }, [loading, isAuthenticated, router, requireAuth]);
+
+    // if (loading) {
+    //   // Show a loading spinner or message until authentication is verified
     //   return <div>Loading...</div>;
     // }
 
+    // Render the wrapped component if authenticated or no authentication is required
     return <WrappedComponent {...props} />;
   };
+
+  // Add a display name for debugging
+  AuthenticatedComponent.displayName = `withAuth(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+
+  return AuthenticatedComponent;
 };
 
 export default withAuth;
+
