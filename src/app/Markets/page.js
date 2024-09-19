@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState,useRef } from 'react';
 import Moralis from 'moralis';
+import React from 'react';
 
 import {
   Table,
@@ -83,7 +84,7 @@ const data1 = ["ERC 20","Cryptocurrencies"];
         <select name="" id="" className="bg-black mr-5" onChange={(e)=>{setMode(e.target.value) 
                 console.log(mode)}}>
             {data1.map((item) => {
-            return <option className='text-white' value={item} onChange={(e)=>{setMode(e.target.value); 
+            return <option key={item} className='text-white' value={item} onChange={(e)=>{setMode(e.target.value); 
                 console.log(mode)}}>{item}</option>                
             })}
         </select>
@@ -102,8 +103,9 @@ const data1 = ["ERC 20","Cryptocurrencies"];
           </TableHead>
           <TableBody>
             {data!=null? data.map((item) => (
-              <TableRow key={item.from}>
-                <TableCell ><div className='flex items-center'><Image src={item.token_logo} className='mr-2' width={50} height={50}></Image>{item.token_name}</div></TableCell>
+              
+              <TableRow key={item.token_symbol+item.price_usd}>
+                <TableCell ><div className='flex items-center'><Image src={item.token_logo} className='mr-2' width={50} height={50} alt=''></Image>{item.token_name}</div></TableCell>
                 <TableCell >{item.token_symbol}</TableCell>
                 <TableCell >{"$"+ item.price_usd}</TableCell>
                 <TableCell>{"$"+ item.market_cap_usd}</TableCell> 
@@ -112,6 +114,7 @@ const data1 = ["ERC 20","Cryptocurrencies"];
                 
                 
               </TableRow>
+              
             )):<></>}
           </TableBody></>:<>
 
@@ -128,7 +131,7 @@ const data1 = ["ERC 20","Cryptocurrencies"];
           <TableBody>
             {data2.map((item) => (
               <TableRow key={item.name}>
-                <TableCell ><div className='flex items-center'><Image src={item.logo} className='mr-2' width={50} height={50}></Image>{item.name}</div></TableCell>
+                <TableCell ><div className='flex items-center'><Image src={item.logo} className='mr-2' width={50} height={50} alt=''></Image>{item.name}</div></TableCell>
                 <TableCell >{item.symbol}</TableCell>
                 <TableCell >{"$"+ item.usd_price}</TableCell>
                 <TableCell>{"$"+ item.market_cap_usd}</TableCell> 
