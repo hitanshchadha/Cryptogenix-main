@@ -30,6 +30,7 @@
     "@react-stately/datepicker": "^3.10.2",
     "@remixicon/react": "^4.2.0",
     "date-fns": "^3.6.0",
+    "dotenv": "^16.4.5",
     "moralis": "^2.27.2",
     "next": "14.2.11",
     "next-themes": "^0.3.0",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.9",
+    "@types/react": "18.3.7",
     "eslint": "^8",
     "eslint-config-next": "14.2.11",
     "postcss": "^8",
