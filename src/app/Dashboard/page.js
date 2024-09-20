@@ -21,12 +21,9 @@ function UserDashboard() {
     const call= async() => {
         //get account
         const account=  await web3.eth.getAccounts();
-        localStorage.setItem('account', JSON.stringify(account));
+        localStorage.setItem('account', JSON.stringify(account[0]));
        //get networth
         try {
-            await Moralis.start({
-              apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
-            });
             const response = await Moralis.EvmApi.wallets.getWalletNetWorth({
                 "excludeSpam": true,
                 "excludeUnverifiedContracts": true,

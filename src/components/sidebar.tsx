@@ -6,6 +6,7 @@ import React from "react";
 import { usePathname } from 'next/navigation'
 import logo from "@/assets/cryptogenix-high-resolution-logo-transparent.png"
 import Image from "next/image";
+import Moralis from 'moralis';
 
 
 import Web3 from 'web3';
@@ -16,11 +17,13 @@ import { useState } from "react";
 const Sidebar = () => {
 const [data, setData] = React.useState([]);
 
-  const hi=async()=>{
-    
-    
-    
-  }
+window.onload=async()=>{
+  await Moralis.start({
+    apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+  });
+  
+  
+}
   
   
     

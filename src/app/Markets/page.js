@@ -35,10 +35,7 @@ const call= async()=> {
 
     
     try {
-        await Moralis.start({
-          apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
-        });
-      
+        
         
         const response1 =  await Moralis.EvmApi.marketData.getTopERC20TokensByMarketCap({});
          const response2= await Moralis.EvmApi.marketData.getTopCryptoCurrenciesByMarketCap({});
