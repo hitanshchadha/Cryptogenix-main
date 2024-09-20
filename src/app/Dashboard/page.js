@@ -6,12 +6,12 @@ import { useEffect, useRef } from 'react';
 import Moralis from 'moralis';
 import ParticlesBackground from "@/components/Particles.jsx";
 
-function userDashboard() {
+function UserDashboard() {
     const [account,setAccount]=useState();
     const [balance,setbalance]=useState();
     const [networth,setnetworth]=useState();
     const isMounted = useRef(false);
-
+    //initialize web3
     let web3;
     if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined')
     {
@@ -19,9 +19,10 @@ function userDashboard() {
         }
     
     const call= async() => {
+        //get account
         const account=  await web3.eth.getAccounts();
         localStorage.setItem('account', JSON.stringify(account));
-       
+       //get networth
         try {
             await Moralis.start({
               apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
@@ -38,18 +39,12 @@ function userDashboard() {
             catch (e) {
                 console.error(e);
             }
-
-
-
-        
-
-       
-     
         const balance= await web3.eth.getBalance(account[0]);
         localStorage.setItem('balance', JSON.stringify(web3.utils.fromWei(balance.toString(), 'ether')));
         
     }
     const load=()=> { 
+        //set local storage
         const networth = localStorage.getItem('networth');
         const account = localStorage.getItem('account');
         const balance = localStorage.getItem('balance');
@@ -82,7 +77,6 @@ useEffect(() => {
         </span>
         </div>
     </div>
-    
     <div className=" h-[20vh] w-[30vw] rounded-3xl mt-6 text-2xl bg-white p-4 text-black flex flex-col"> 
     <span className="font-bold text-4xl font-mono">Net Worth:</span> <span className="text-center text-5xl mt-4">$ {String(networth).slice(0,8)} </span>
     </div>
@@ -90,4 +84,4 @@ useEffect(() => {
     </div> );
 }
  
-export default withAuth(userDashboard,true);
+export default withAuth(UserDashboard,true);
