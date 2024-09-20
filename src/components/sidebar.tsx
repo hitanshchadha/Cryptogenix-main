@@ -1,8 +1,9 @@
 
 "use client";
+"use strict";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import React from "react";
+import React, { useEffect } from "react";
 import { usePathname } from 'next/navigation'
 import logo from "@/assets/cryptogenix-high-resolution-logo-transparent.png"
 import Image from "next/image";
@@ -17,13 +18,16 @@ import { useState } from "react";
 const Sidebar = () => {
 const [data, setData] = React.useState([]);
 
-window.onload=async()=>{
-  await Moralis.start({
-    apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
-  });
+useEffect(() => {
+  const start= async()=>{
+    await Moralis.start({
+      apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+    });}
+    
+    
   
-  
-}
+  start();
+},[])
   
   
     

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import metamask from "@/assets/metamask.svg";
 import Image from "next/image";
 import withAuth from '@/app/hoc/withAuth';
+import ParticlesBackground from "@/components/Particles.jsx";
 
 const Transfer = () => {
     const [address,setaddress]=useState();
@@ -43,6 +44,7 @@ const Transfer = () => {
 
         </div>
     </div>
+    <ParticlesBackground/>
     
     </> );
 }

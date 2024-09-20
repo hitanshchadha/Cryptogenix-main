@@ -5,6 +5,7 @@ import Image from "next/image";
 import Moralis from 'moralis';
 import withAuth from '@/app/hoc/withAuth';
 import Web3 from 'web3';
+import ParticlesBackground from "@/components/Particles.jsx";
 const Allowance = () => {
   const networks=[
     {
@@ -107,7 +108,9 @@ const Allowance = () => {
     </div>
 
     </div>
-    </div></> );
+    </div>
+    <ParticlesBackground/>
+    </> );
 }
  
 export default withAuth(Allowance,true);

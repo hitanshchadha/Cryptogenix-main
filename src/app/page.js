@@ -17,6 +17,7 @@ export default function Home() {
     
     const web3 = new Web3(window.ethereum); // Initialize Web3 instance with the injected Ethereum provider (Metamask)
     try {
+      
       // Request account access
       await window.ethereum.enable();
       setConnectedStatus("Connected to");
@@ -24,6 +25,7 @@ export default function Home() {
       // Account now exposed
       const accounts = await web3.eth.getAccounts(); // Get the user's Ethereum accounts (returns an array of accounts)
       const balance= await web3.eth.getBalance(accounts[0]); // Get the user's Ethereum balance
+      
     } catch(e) {
       // User denied access
       return false
