@@ -36,7 +36,7 @@ useEffect(() => {
   const { theme } = useTheme();
   const [active, setActive] = React.useState();
   return (
-    <div className="flex sticky top-0 left-0 flex-col items-center h-screen bg-white dark:bg-black dark:text-white w-[307px] border-r-2 dark:border-0 border-[#C0C5CB5E]">
+    <div className="flex sticky top-0 left-0 flex-col items-center h-screen bg-black text-white w-[307px] border-r-2 border-0 border-black">
       {/* sidebar logo */}
       <div className="flex p-10">
         <Image src={logo} alt="logo"  />
@@ -46,7 +46,7 @@ useEffect(() => {
       <nav className="flex flex-col p-8 space-y-4 text-lg ">
         <Link
           href={"/Dashboard"}
-          className={"hover:bg-[#D5E6FB] dark:hover:bg-[#062141] text-primary rounded-lg " + (currentPath=="/Dashboard" ? "bg-[#D5E6FB] dark:bg-[#062141] text-primary" : "")}
+          className={" hover:bg-[#062141] text-primary rounded-lg " + (currentPath=="/Dashboard" ? " bg-[#062141] text-primary" : "")}
         >
           <div className="flex items-center gap-4 py-3 px-8 font-medium w-[208px]">
             <svg
@@ -66,7 +66,7 @@ useEffect(() => {
         </Link>
         <Link
           href={"/Markets"}
-          className={"hover:bg-[#D5E6FB] dark:hover:bg-[#062141] text-primary rounded-lg " + (currentPath=="/Markets" ? "bg-[#D5E6FB] dark:bg-[#062141] text-primary" : "")}
+          className={" hover:bg-[#062141] text-primary rounded-lg " + (currentPath=="/Markets" ? " bg-[#062141] text-primary" : "")}
         >
           <div className="flex items-center gap-4 py-3 px-6 rounded-2xl font-medium w-[208px]">
             <svg
@@ -86,7 +86,7 @@ useEffect(() => {
         </Link>
         <Link
           href={"/Watchlist"}
-          className={"hover:bg-[#D5E6FB] dark:hover:bg-[#062141] text-primary rounded-lg " + (currentPath=="/Watchlist" ? "bg-[#D5E6FB] dark:bg-[#062141] text-primary" : "")}
+          className={" hover:bg-[#062141] text-primary rounded-lg " + (currentPath=="/Watchlist" ? " bg-[#062141] text-primary" : "")}
         >
           <div className="flex items-center gap-4 py-3 px-6 rounded-2xl font-medium w-[208px]">
             <svg
@@ -106,7 +106,7 @@ useEffect(() => {
         </Link>
         <Link
           href={"/Transactions"}
-          className="hover:bg-[#D5E6FB] dark:hover:bg-[#062141] rounded-lg"
+          className=" hover:bg-[#062141] rounded-lg"
         >
           <div className="flex items-center gap-4 py-3 px-6 rounded-2xl font-medium w-[208px]">
             <svg
@@ -125,8 +125,28 @@ useEffect(() => {
           </div>
         </Link>
         <Link
+          href={"/BalanceHistory"}
+          className=" hover:bg-[#062141] rounded-lg"
+        >
+          <div className="flex items-center gap-4 py-3 px-6 rounded-2xl font-medium w-[208px]">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="17"
+              height="17"
+              viewBox="0 0 17 17"
+              fill="none"
+            >
+              <path
+                d="M16.509 6.551C16.5868 6.3633 16.6071 6.15676 16.5674 5.9575C16.5278 5.75825 16.4299 5.57524 16.2862 5.43163L11.1514 0.296875L9.69933 1.74898L13.0811 5.13073H0.155881V7.18463H15.5601C15.7632 7.18468 15.9618 7.12451 16.1307 7.01173C16.2996 6.89894 16.4312 6.73861 16.509 6.551V6.551ZM0.233929 9.87216C0.156184 10.0599 0.135859 10.2664 0.175527 10.4657C0.215195 10.6649 0.313073 10.8479 0.456777 10.9915L5.59153 16.1263L7.04364 14.6742L3.66189 11.2924H16.5871V9.23853H1.18283C0.979705 9.23834 0.781095 9.29846 0.612168 9.41126C0.443241 9.52406 0.311601 9.68447 0.233929 9.87216V9.87216Z"
+                fill={currentPath=="/BalanceHistory" ? "#0060FF" : "white"}
+              />
+            </svg>
+            <span>Balance History</span>
+          </div>
+        </Link>
+        <Link
           href={"/Transfer"}
-          className="hover:bg-[#D5E6FB] dark:hover:bg-[#062141] rounded-lg"
+          className=" hover:bg-[#062141] rounded-lg"
         >
           <div className="flex items-center gap-4 py-3 px-7 rounded-2xl font-medium w-[208px]">
             <svg
@@ -149,7 +169,7 @@ useEffect(() => {
 
         <Link
           href={"/Allowance"}
-          className="hover:bg-[#D5E6FB] dark:hover:bg-[#062141] rounded-lg"
+          className=" hover:bg-[#062141] rounded-lg"
         >
           <div className="flex items-center gap-4 py-3 px-6 rounded-2xl font-medium w-[208px]">
             <svg
@@ -171,26 +191,8 @@ useEffect(() => {
             <span>Allowance</span>
           </div>
         </Link>
-        <Link
-          href={"/"}
-          className=" dark:text-white hover:bg-red-300 dark:hover:bg-red-500 rounded-lg"
-        >
-          <div className="flex items-center gap-4 py-3 px-6 rounded-2xl font-medium w-[208px]">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="17"
-              viewBox="0 0 18 17"
-              fill="none"
-            >
-              <path
-                d="M13.4675 3.81452L12.2276 5.05449L14.4965 7.33217H5.55284V9.09099H14.4965L12.2276 11.3599L13.4675 12.6086L17.8646 8.21158L13.4675 3.81452ZM2.03519 2.0557H9.07049V0.296875H2.03519C1.06784 0.296875 0.276367 1.08835 0.276367 2.0557V14.3675C0.276367 15.3348 1.06784 16.1263 2.03519 16.1263H9.07049V14.3675H2.03519V2.0557Z"
-                fill={currentPath=="/Markets" ? "#0060FF" : "white"}
-              />
-            </svg>
-            <span>Log Out</span>
-          </div>
-        </Link>
+        
+         
         
       </nav>
 

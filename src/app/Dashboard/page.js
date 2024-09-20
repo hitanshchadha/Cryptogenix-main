@@ -21,7 +21,6 @@ function UserDashboard() {
     const call= async() => {
         //get account
         const account=  await web3.eth.getAccounts();
-        localStorage.setItem('account', JSON.stringify(account[0]));
        //get networth
         try {
             const response = await Moralis.EvmApi.wallets.getWalletNetWorth({
@@ -38,6 +37,7 @@ function UserDashboard() {
             }
         const balance= await web3.eth.getBalance(account[0]);
         localStorage.setItem('balance', JSON.stringify(web3.utils.fromWei(balance.toString(), 'ether')));
+        localStorage.setItem('account', JSON.stringify(account[0]));
         
     }
     const load=()=> { 

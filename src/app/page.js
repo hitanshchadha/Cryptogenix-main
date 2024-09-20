@@ -24,6 +24,7 @@ export default function Home() {
       
       // Account now exposed
       const accounts = await web3.eth.getAccounts(); // Get the user's Ethereum accounts (returns an array of accounts)
+      localStorage.setItem('account', JSON.stringify(accounts[0]));
       const balance= await web3.eth.getBalance(accounts[0]); // Get the user's Ethereum balance
       
     } catch(e) {

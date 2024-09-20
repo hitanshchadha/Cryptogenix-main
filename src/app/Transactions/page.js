@@ -209,7 +209,7 @@ const[network,setNetwork]=useState();
                   
                 
                   <DialogClose asChild>
-                    <button className="w-full text-white px-4   sm:w-fit">Ok, got it!</button>
+                    <button className="w-full text-white px-4 py-2 border-2 border-white border-opacity-55 hover:border-opacity-100  sm:w-fit">Ok, got it!</button>
                   </DialogClose>
                 </DialogFooter>
               </DialogContent>
