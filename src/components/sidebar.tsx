@@ -1,6 +1,6 @@
 
 "use client";
-"use strict";
+
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import React, { useEffect } from "react";

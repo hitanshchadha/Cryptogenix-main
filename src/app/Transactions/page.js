@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { useEffect, useState,useRef } from 'react';
 import Moralis from 'moralis';
 import { Badge } from "@/components/Badge"
@@ -38,15 +38,19 @@ import withAuth from '@/app/hoc/withAuth';
   }
 
   let web3;
+  let account;
+  let data1;
   if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined')
   {
           web3 = new Web3(window.ethereum);
+          account=JSON.parse(localStorage.getItem('account'))
+          data1=JSON.parse(localStorage.getItem('data1'))
       }
   
       
-      const[currentAccount,setCurrentAccount]=useState(JSON.parse(localStorage.getItem('account')) || null);
+      const[currentAccount,setCurrentAccount]=useState( account || null);
       
-      const [data,setData]=useState( JSON.parse(localStorage.getItem('data1')) || null);
+      const [data,setData]=useState( data1 || null);
 
 
       
