@@ -2,7 +2,8 @@
 import Web3 from "web3";
 import { BarChart } from "@/components/BarChart";
 import React, { useState } from "react";
-import Moralis from "moralis";
+import Moralis from "@/lib/moralisClient";
+
 import { DateRange, DateRangePicker } from "@/components/DatePicker"
 
 

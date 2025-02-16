@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState,useRef } from 'react';
-import Moralis from 'moralis';
+import Moralis from "@/lib/moralisClient";
+
 import { Badge } from "@/components/Badge"
 import {
   Table,

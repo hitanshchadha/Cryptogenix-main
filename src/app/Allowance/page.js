@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import metamask from "@/assets/metamask.svg";
 import Image from "next/image";
-import Moralis from 'moralis';
+import Moralis from "@/lib/moralisClient";
 import withAuth from '@/app/hoc/withAuth';
 import Web3 from 'web3';
 import ParticlesBackground from "@/components/Particles.jsx";
@@ -65,10 +65,7 @@ const Allowance = () => {
     const getAllowance=async()=>{
     
       const accounts = await web3.eth.getAccounts();
-    try {
-      await Moralis.start({
-        apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
-      });
+      try {
       
       
       const response = await Moralis.EvmApi.token.getTokenAllowance({

@@ -38,7 +38,7 @@ const withAuth = (WrappedComponent, requireAuth = false) => {
     useEffect(() => {
       // Redirect logic only if authentication is required
       if (!loading && requireAuth && !isAuthenticated) {
-        router.push("/");  // Redirect to login if not authenticated
+         // Redirect to login if not authenticated
       }
     }, [loading, isAuthenticated, router, requireAuth]);
 

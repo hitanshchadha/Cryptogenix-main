@@ -4,11 +4,13 @@ import { useState } from "react";
 import Web3 from 'web3';
 import metamask from "@/assets/metamask.svg";
 import logo from "@/assets/cryptogenix-high-resolution-logo-transparent.png"
+import { signIn, signOut, useSession } from "next-auth/react";
+
 
 
 
 export default function Home() {
-
+  const { data: session } = useSession();
   // State to store the wallet connection status
   const [connectedStatus, setConnectedStatus] = useState("Connect with");
   
@@ -40,7 +42,7 @@ export default function Home() {
       <div className=" connect w-40 h-20 flex justify-center items-center text-sky-200 border-2 rounded-lg border-sky-200 shadow-[0_0_2px_#fff,inset_0_0_2px_#fff,0_0_5px_#08f,0_0_15px_#08f,0_0_30px_#08f]  ">
         <div className="flex flex-col justify-center items-center">
           <Image src={metamask} className="mb-6" />
-          <button className=" mt-10 bg-black py-3 px-6 border-2 border-sky-200 border-opacity-40 rounded-xl hover:border-opacity-100 transition-colors ease-in-out " onClick={connectWallet}>{connectedStatus} <span className="text-orange-400">Metamask</span> </button> <br />
+          <button className=" mt-10 bg-black py-3 px-6 border-2 border-sky-200 border-opacity-40 rounded-xl hover:border-opacity-100 transition-colors ease-in-out " onClick={()=>{signIn("google")}}> Sign In With Google </button> <br />
         </div>
       </div>
     </div>
